@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylecreateaccount.css">
+    <script defer src="js/session.js"></script>
+    <script defer src="./js/createaccount.js"></script>
+  <title>Create Account</title>
+</head>
+<body>
+  <nav class="bg-[#dbe0d7] flex items-center justify-between px-6 py-3 shadow-md">
+    <div class="flex items-center space-x-3">
+      <a href="index.html" class="logo-link">
+        <img src="assets/erasebg-transformed.png" alt="Career Launch logo" class="logo-image">
+      </a>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-6 text-[#0b1e35] nav-links" data-nav-auth>
+      <a href="login.html" class="hover:text-orange-600">Log in</a>
+      <a href="jobs.html" class="hover:text-orange-600">Find a job</a>
+      <button data-action="logout" class="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 hidden">Disconnect</button>
+    </div>
+  </nav>
+
+  <div id="page-content">
+    <section class="px-6 py-16">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid gap-8 lg:grid-cols-[1.1fr_1fr] bg-white/85 backdrop-blur border border-gray-200 shadow-2xl rounded-3xl overflow-hidden">
+          <div class="account-intro p-8 md:p-12 text-white">
+            <h1 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Create your Career Launch account</h1>
+            <p class="text-base md:text-lg mb-10 text-white/90">
+              Centralise your recruitment workflow in one secure hub. Manage applications, share updates with your team, and follow your pipeline live.
+            </p>
+            <ul class="space-y-4 text-sm md:text-base text-white/85">
+              <li class="flex items-center gap-3">
+                <span class="account-bullet">✓</span>
+                Custom job suggestions and curated internship offers.
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="account-bullet">✓</span>
+                Track your recruiter activity with collaborative tools.
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="account-bullet">✓</span>
+                Receive smart alerts when new talents match your needs.
+              </li>
+            </ul>
+          </div>
+
+          <div class="p-8 md:p-12 bg-white">
+            <form class="space-y-6 account-form">
+              <div class="grid gap-6 md:grid-cols-2">
+                <label class="account-field">
+                  <span class="account-label">First name</span>
+                  <input id="first_name" type="text" name="first_name" autocomplete="given-name" required class="account-input" placeholder="Jane">
+                </label>
+                <label class="account-field">
+                  <span class="account-label">Last name</span>
+                  <input id="last_name" type="text" name="last_name" autocomplete="family-name" required class="account-input" placeholder="Doe">
+                </label>
+              </div>
+
+              <label class="account-field">
+                <span class="account-label">Email address</span>
+                <input id="email" type="email" name="email" autocomplete="email" required class="account-input" placeholder="you@mail.com">
+              </label>
+
+              <div class="account-field">
+                <label class="account-field">
+                  <span class="account-label">Create password</span>
+                  <input id="password" type="password" name="password" required class="account-input" placeholder="••••••••">
+                </label>
+                <label class="account-field">
+                  <span class="account-label">Confirm password</span>
+                  <input id="password_confirm" type="password" name="password_confirm" required class="account-input" placeholder="••••••••">
+                </label>
+              </div>
+
+              <div class="account-field">
+                <label class="account-field">
+                  <span class="account-label">Phone number</span>
+                  <input id="phone" type="tel" name="phone" required class="account-input" placeholder="+33 6 12 34 56 78">
+                </label>
+              </div>
+
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <button id="next-step" type="button" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
+                  Next step
+                </button>
+
+                <a href="login.html" class="text-[#0b1e35] font-medium hover:text-orange-500 transition">
+                  Already registered? Sign in
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+pymysql
+fastapi[standard]
+dotenv
+passlib
+cryptography

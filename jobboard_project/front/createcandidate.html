@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylecreateaccount.css">
+    <script defer src="js/session.js"></script>
+    <script defer src="js/createcandidate.js"></script>
+    <title>Create Candidate Profile</title>
+  </head>
+
+  <body class="bg-gray-100 font-['Roboto']">
+    <nav class="bg-[#dbe0d7] flex items-center justify-between px-6 py-3 shadow-md">
+      <div class="flex items-center space-x-3">
+      <a href="index.html">
+        <img src="assets/erasebg-transformed.png" alt="Career Launch logo" class="w-24 h-auto">
+      </a>
+    </div>
+      <div class="hidden md:flex items-center space-x-6 text-[#0b1e35] font-semibold" data-nav-auth>
+        <a href="login.html" class="hover:text-orange-600">Log in</a>
+        <a href="jobs.html" class="hover:text-orange-600">Find a job</a>
+        <button data-action="logout" class="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 hidden">Disconnect</button>
+      </div>
+    </nav>
+
+    <section class="px-6 py-16">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid gap-8 lg:grid-cols-[1.1fr_1fr] bg-white/85 backdrop-blur border border-gray-200 shadow-2xl rounded-3xl overflow-hidden">
+          
+          <div class="p-8 md:p-12 bg-[#0b1e35] text-white">
+            <h1 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Build your candidate profile</h1>
+            <p class="text-base md:text-lg mb-10 text-white/90">
+              Showcase your experience, skills, and career goals. Recruiters will see your profile and match you with suitable opportunities.
+            </p>
+            <ul class="space-y-4 text-sm md:text-base text-white/85">
+              <li class="flex items-center gap-3">
+                <span class="text-orange-500">✓</span>
+                Highlight your skills and experiences.
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-orange-500">✓</span>
+                Get matched with recruiters looking for your profile.
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-orange-500">✓</span>
+                Easily manage and update your job applications.
+              </li>
+            </ul>
+          </div>
+
+          <div class="p-8 md:p-12 bg-white">
+            <form id="candidate-form" class="space-y-6">
+              <div class="grid gap-6 md:grid-cols-2">
+                <label class="block">
+                  <span class="text-gray-700">First name</span>
+                  <input id="first_name" type="text" required class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="Jane">
+                </label>
+                <label class="block">
+                  <span class="text-gray-700">Last name</span>
+                  <input id="last_name" type="text" required class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="Doe">
+                </label>
+              </div>
+
+              <label class="block">
+                <span class="text-gray-700">Email address</span>
+                <input id="email" type="email" required class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="you@mail.com">
+              </label>
+
+              <label class="block">
+                <span class="text-gray-700">Location</span>
+                <input id="location" type="text" required class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="Paris, France">
+              </label>
+
+              <label class="block">
+                <span class="text-gray-700">Years of experience</span>
+                <input id="years_experience" type="number" min="0" class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="3">
+              </label>
+
+              <label class="block">
+                <span class="text-gray-700">Education level</span>
+                <select id="education" class="mt-1 w-full border rounded-lg px-3 py-2">
+                  <option value="">Select...</option>
+                  <option>Bachelor's Degree</option>
+                  <option>Master's Degree</option>
+                  <option>Doctorate</option>
+                  <option>Technical Certification</option>
+                  <option>Other</option>
+                </select>
+              </label>
+
+              <label class="block">
+                <span class="text-gray-700">Skills (comma separated)</span>
+                <input id="skills" type="text" class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="Python, FastAPI, SQL, Teamwork">
+              </label>
+
+              <label class="block">
+                <span class="text-gray-700">Professional experience</span>
+                <textarea id="experience" rows="3" class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="Example: 3 years as Frontend Developer at TechNova..."></textarea>
+              </label>
+
+              <label class="block">
+                <span class="text-gray-700">About you</span>
+                <textarea id="about" rows="4" class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="Describe your goals, motivations, and interests..."></textarea>
+              </label>
+
+              <label class="block">
+                <span class="text-gray-700">Upload your CV (optional)</span>
+                <input id="cv" type="file" accept=".pdf,.doc,.docx" class="mt-1 w-full border rounded-lg px-3 py-2">
+              </label>
+
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <button id="save-profile" type="button" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
+                  Save profile
+                </button>
+                <a href="login.html" class="text-[#0b1e35] font-medium hover:text-orange-500 transition">
+                  Already registered? Sign in
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

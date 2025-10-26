@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruiter Space</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="js/session.js"></script>
+  <script defer src="js/recruiterspace.js"></script>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-[#dbe0d7] flex items-center justify-between px-6 py-3 shadow-md">
+    <div class="flex items-center space-x-3">
+      <a href="index.html" class="logo-link">
+        <img src="assets/erasebg-transformed.png" alt="Career Launch logo" class="logo-image">
+      </a>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-6 text-[#0b1e35] nav-links" data-nav-auth>
+      <a href="login.html" class="hover:text-orange-600">Log in</a>
+      <a href="jobs.html" class="hover:text-orange-600">Find a job</a>
+      <button data-action="logout" class="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 hidden">Disconnect</button>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-6 py-10 space-y-10">
+    <header>
+      <h1 class="text-3xl font-bold text-[#0b1e35]">Recruiter Dashboard</h1>
+      <p class="mt-2 text-[#0b1e35]/70">Manage your company profile, job postings, and review candidates.</p>
+    </header>
+
+    <section class="bg-white shadow rounded-lg p-6 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <h2 class="text-2xl font-semibold text-[#0b1e35]">Job postings</h2>
+        <button id="toggle-ad-form" class="inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+          <span>New job</span>
+        </button>
+      </div>
+
+      <form id="ad-form" class="hidden grid gap-4 border border-dashed border-orange-200 rounded-lg p-4 md:grid-cols-2">
+        <input type="hidden" id="ad-id">
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Title</span>
+          <input id="ad-title" type="text" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Location</span>
+          <input id="ad-location" type="text" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Contract type</span>
+          <select id="ad-contract" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+            <option value="">Select...</option>
+            <option value="CDI">CDI</option>
+            <option value="CDD">CDD</option>
+            <option value="Stage">Stage</option>
+            <option value="Freelance">Freelance</option>
+            <option value="Alternance">Alternance</option>
+          </select>
+        </label>
+        <div class="grid grid-cols-2 gap-4">
+          <label class="flex flex-col">
+            <span class="text-sm font-medium text-[#0b1e35]">Salary min (€)</span>
+            <input id="ad-salary-min" type="number" min="0" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+          </label>
+          <label class="flex flex-col">
+            <span class="text-sm font-medium text-[#0b1e35]">Salary max (€)</span>
+            <input id="ad-salary-max" type="number" min="0" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+          </label>
+        </div>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Expiry date</span>
+          <input id="ad-expiry" type="date" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col md:col-span-2">
+          <span class="text-sm font-medium text-[#0b1e35]">Description</span>
+          <textarea id="ad-description" rows="4" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"></textarea>
+        </label>
+        <div class="md:col-span-2 flex justify-end gap-2">
+          <button type="button" id="cancel-ad" class="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-[#0b1e35] hover:bg-gray-100">Cancel</button>
+          <button type="submit" class="rounded-md bg-orange-500 px-6 py-2 font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Save job</button>
+        </div>
+      </form>
+
+      <div>
+        <h3 class="text-lg font-semibold text-[#0b1e35] mb-4">Your job postings</h3>
+        <div id="ads-empty" class="text-sm text-gray-500 hidden">No job postings yet. Create one to get started.</div>
+        <ul id="ads-list" class="space-y-4"></ul>
+      </div>
+    </section>
+
+    <section class="bg-white shadow rounded-lg p-6 space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-semibold text-[#0b1e35]">Company information</h2>
+        <span id="company-status" class="text-sm text-green-600 hidden">Saved</span>
+      </div>
+      <form id="company-form" class="grid gap-4 md:grid-cols-2">
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Company name</span>
+          <input id="company-name" type="text" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" required>
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Industry</span>
+          <input id="company-industry" type="text" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Company size</span>
+          <select id="company-size" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+            <option value="">Select size</option>
+            <option value="Startup">Startup</option>
+            <option value="PME">PME</option>
+            <option value="Grande entreprise">Grande entreprise</option>
+          </select>
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Website</span>
+          <input id="company-website" type="url" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" placeholder="https://company.com">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Email</span>
+          <input id="company-email" type="email" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Phone</span>
+          <input id="company-phone" type="tel" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col md:col-span-2">
+          <span class="text-sm font-medium text-[#0b1e35]">Address</span>
+          <input id="company-address" type="text" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <div class="md:col-span-2 flex justify-end">
+          <button type="submit" class="rounded-md bg-orange-500 px-6 py-2 font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Save company profile</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

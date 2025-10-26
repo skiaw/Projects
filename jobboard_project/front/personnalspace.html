@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Space</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reset.css">
+  <script defer src="js/session.js"></script>
+  <script defer src="js/spa.js"></script>
+  <script defer src="js/personnalspace.js"></script>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-[#dbe0d7] flex items-center justify-between px-6 py-3 shadow-md">
+    <div class="flex items-center space-x-3">
+      <a href="index.html" class="logo-link">
+        <img src="assets/erasebg-transformed.png" alt="Career Launch logo" class="logo-image">
+      </a>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-6 text-[#0b1e35] nav-links" data-nav-auth>
+      <a href="login.html" class="hover:text-orange-600">Log in</a>
+      <a href="jobs.html" class="hover:text-orange-600">Find a job</a>
+      <button data-action="logout" class="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 hidden">Disconnect</button>
+    </div>
+  </nav>
+
+  <div id="page-content">
+    <main class="container mx-auto px-6 py-10 space-y-8">
+      <header>
+        <h1 class="text-3xl font-bold text-[#0b1e35]">My Personal Space</h1>
+        <p class="mt-2 text-[#0b1e35]/70">Review the information you provided and manage your applications.</p>
+      </header>
+
+      <div class="grid gap-8 lg:grid-cols-[380px,1fr]">
+        <section class="bg-white shadow rounded-lg p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-semibold text-[#0b1e35]">My Information</h2>
+            <span id="profile-status" class="text-sm text-green-600 hidden">Saved</span>
+          </div>
+          <form id="profile-form" class="space-y-4">
+            <div>
+              <label for="profile-firstname" class="block text-sm font-medium text-[#0b1e35]">First name</label>
+              <input id="profile-firstname" name="firstname" type="text" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" placeholder="John">
+            </div>
+            <div>
+              <label for="profile-lastname" class="block text-sm font-medium text-[#0b1e35]">Last name</label>
+              <input id="profile-lastname" name="lastname" type="text" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" placeholder="Doe">
+            </div>
+            <div>
+              <label for="profile-email" class="block text-sm font-medium text-[#0b1e35]">Email</label>
+              <input id="profile-email" name="email" type="email" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" placeholder="john.doe@email.com">
+            </div>
+            <div>
+              <label for="profile-phone" class="block text-sm font-medium text-[#0b1e35]">Phone</label>
+              <input id="profile-phone" name="phone" type="tel" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" placeholder="+33 6 12 34 56 78">
+            </div>
+            <div>
+              <label for="profile-location" class="block text-sm font-medium text-[#0b1e35]">Location</label>
+              <input id="profile-location" name="location" type="text" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" placeholder="Paris, France">
+            </div>
+            <div>
+              <label for="profile-about" class="block text-sm font-medium text-[#0b1e35]">About me</label>
+              <textarea id="profile-about" name="about" rows="4" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" placeholder="Summarize your experience and career goals."></textarea>
+            </div>
+            <button type="submit" class="w-full rounded-md bg-orange-500 py-2 font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Save changes</button>
+          </form>
+        </section>
+
+        <section class="bg-white shadow rounded-lg p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-semibold text-[#0b1e35]">My Applications</h2>
+            <button id="refresh-applications" class="text-sm text-orange-600 hover:text-orange-700">Refresh</button>
+          </div>
+          <div id="applications-empty" class="text-sm text-gray-500 hidden">
+            You have not applied to any jobs yet.
+          </div>
+          <ul id="applications-list" class="space-y-4">
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

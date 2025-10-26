@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Launch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reset.css">
+  <script defer src="js/session.js"></script>
+  <script defer src="js/spa.js"></script>
+</head>
+<body class="bg-gray-100">
+
+  <nav class="bg-[#dbe0d7] flex items-center justify-between px-6 py-3 shadow-md">
+    <div class="flex items-center space-x-3">
+      <a href="index.html" class="logo-link">
+        <img src="assets/erasebg-transformed.png" alt="Career Launch logo" class="logo-image">
+      </a>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-6 text-[#0b1e35] nav-links" data-nav-auth>
+        <a href="login.html" class="hover:text-orange-600">Log in</a>
+      <a href="jobs.html" class="hover:text-orange-600">Find a job</a>
+      <button data-action="logout" class="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 hidden">Disconnect</button>
+    </div>
+  </nav>
+
+  <div id="page-content">
+    <section class="relative h-[90vh] flex flex-col justify-center items-center text-center text-white">
+      <img src="assets/gratte_ciel.png" alt="City background" class="absolute inset-0 w-full h-full object-cover z-0">
+      <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+      <div class="z-10">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">Find your<br>future!</h1>
+        <p class="text-lg mb-8" style="font-family: 'Roboto', sans-serif;">Look out for a job or internship!</p>
+        <a href="jobs.html" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full text-lg">Explore jobs</a>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

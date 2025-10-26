@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylelogin.css">
+    <script defer src="js/session.js"></script>
+    <script defer src="js/login.js"></script>
+    <title>Log-in form</title>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-[#dbe0d7] flex items-center justify-between px-6 py-3 shadow-md">
+    <div class="flex items-center space-x-3">
+      <a href="index.html" class="logo-link">
+        <img src="assets/erasebg-transformed.png" alt="Career Launch logo" class="logo-image">
+      </a>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-6 text-[#0b1e35] nav-links" data-nav-auth>
+        <a href="login.html" class="hover:text-orange-600">Log in</a>
+      <a href="jobs.html" class="hover:text-orange-600">Find a job</a>
+      <button data-action="logout" class="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 hidden">Disconnect</button>
+    </div>
+  </nav>
+
+  <div id="page-content">
+    <section class="px-6 py-16">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_1fr] bg-white/85 backdrop-blur border border-gray-200 shadow-2xl rounded-3xl overflow-hidden">
+          <div class="login-intro p-8 md:p-12 text-white">
+            <h1 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Welcome back to Career Launch</h1>
+            <p class="text-base md:text-lg mb-10 text-white/90">
+              Pick up where you left off, review applications, and keep your hiring pipeline moving without losing momentum.
+            </p>
+            <ul class="space-y-4 text-sm md:text-base text-white/85">
+              <li class="flex items-center gap-3">
+                <span class="login-bullet">✓</span>
+                Review new candidate submissions and respond instantly.
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="login-bullet">✓</span>
+                Access analytics that help you understand hiring progress.
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="login-bullet">✓</span>
+                Collaborate with your team and share interview feedback.
+              </li>
+            </ul>
+          </div>
+
+          <div class="p-8 md:p-12 bg-white">
+            <form id="login-form" class="space-y-6 login-form" novalidate>
+              <div class="login-form-header">
+                <h2 class="text-2xl font-semibold text-[#0b1e35]">Sign in</h2>
+                <p class="text-sm text-[#0b1e35]/70">Enter your details to access your recruiter dashboard.</p>
+              </div>
+
+              <label class="login-field">
+                <span class="login-label">Email address</span>
+                <input id="email" type="email" name="email" autocomplete="email" required class="login-input" placeholder="you@company.com">
+              </label>
+
+              <label class="login-field">
+                <span class="login-label">Password</span>
+                <input id="password" type="password" name="password" autocomplete="current-password" required class="login-input" placeholder="••••••••">
+              </label>
+
+              <p id="error-msg" class="text-sm text-red-600 min-h-[1.25rem]"></p>
+
+              <div class="flex items-center justify-between text-sm">
+                <label class="flex items-center gap-2 text-[#0b1e35]/80">
+                  <input type="checkbox" name="remember" class="login-checkbox">
+                  Remember me
+                </label>
+                <a href="#" class="text-orange-500 hover:text-orange-600 font-medium">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
+                Log in
+              </button>
+
+              <p class="text-center text-sm text-[#0b1e35]/80">
+                No account yet?
+                <a href="createaccount.html" class="text-orange-500 hover:text-orange-600 font-medium">Create one here</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

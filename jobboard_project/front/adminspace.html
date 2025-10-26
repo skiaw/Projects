@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="js/session.js"></script>
+  <script defer src="js/adminspace.js"></script>
+</head>
+<body class="bg-gray-100 font-['Roboto']">
+  <nav class="bg-[#dbe0d7] flex items-center justify-between px-6 py-3 shadow-md">
+    <div class="flex items-center space-x-3">
+      <a href="index.html" class="logo-link">
+        <img src="assets/erasebg-transformed.png" alt="Career Launch logo" class="logo-image">
+      </a>
+    </div>
+    <div class="hidden md:flex items-center space-x-6 text-[#0b1e35] nav-links" data-nav-auth>
+      <a href="login.html" class="hover:text-orange-600">Log in</a>
+      <a href="jobs.html" class="hover:text-orange-600">Find a job</a>
+      <button data-action="logout" class="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 hidden">Disconnect</button>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-6 py-10 space-y-10">
+    <header>
+      <h1 class="text-3xl font-bold text-[#0b1e35]">Admin Dashboard</h1>
+      <p class="mt-2 text-[#0b1e35]/70">Manage users, companies, job postings, and applications across the platform.</p>
+    </header>
+
+    <section class="grid gap-6 md:grid-cols-4" id="admin-overview">
+      <div class="bg-white rounded-lg shadow p-5">
+        <h2 class="text-sm font-medium text-[#0b1e35]/70 uppercase">Users</h2>
+        <p id="overview-users" class="text-3xl font-bold text-[#0b1e35] mt-2">-</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-5">
+        <h2 class="text-sm font-medium text-[#0b1e35]/70 uppercase">Companies</h2>
+        <p id="overview-companies" class="text-3xl font-bold text-[#0b1e35] mt-2">-</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-5">
+        <h2 class="text-sm font-medium text-[#0b1e35]/70 uppercase">Advertisements</h2>
+        <p id="overview-ads" class="text-3xl font-bold text-[#0b1e35] mt-2">-</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-5">
+        <h2 class="text-sm font-medium text-[#0b1e35]/70 uppercase">Applications</h2>
+        <p id="overview-applications" class="text-3xl font-bold text-[#0b1e35] mt-2">-</p>
+      </div>
+    </section>
+
+    <section class="bg-white rounded-lg shadow p-6 space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-semibold text-[#0b1e35]">Create admin account</h2>
+        <span id="admin-create-status" class="text-sm text-green-600 hidden">Admin created</span>
+      </div>
+      <form id="admin-create-form" class="grid gap-4 md:grid-cols-2">
+        <label class="flex flex-col md:col-span-2">
+          <span class="text-sm font-medium text-[#0b1e35]">Email</span>
+          <input id="admin-email" type="email" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col md:col-span-2">
+          <span class="text-sm font-medium text-[#0b1e35]">Password</span>
+          <input id="admin-password" type="password" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <div class="md:col-span-2 flex justify-end">
+          <button type="submit" class="rounded-md bg-orange-500 px-6 py-2 font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Create admin</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="bg-white rounded-lg shadow p-6 space-y-4">
+      <div class="flex items-center justify-between gap-2 flex-wrap">
+        <h2 class="text-2xl font-semibold text-[#0b1e35]">Users</h2>
+        <div class="flex items-center gap-2">
+          <button id="show-users" type="button" class="text-sm text-blue-600 hover:text-blue-700">Show list</button>
+          <button id="refresh-users" class="text-sm text-orange-600 hover:text-orange-700">Refresh</button>
+        </div>
+      </div>
+      <form id="admin-user-create-form" class="grid gap-4 md:grid-cols-3">
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">First name</span>
+          <input id="user-first-name" type="text" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Last name</span>
+          <input id="user-last-name" type="text" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Email</span>
+          <input id="user-email" type="email" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Role</span>
+          <select id="user-role" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+            <option value="Applicant">Applicant</option>
+            <option value="Recruiter">Recruiter</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Phone</span>
+          <input id="user-phone" type="tel" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Password</span>
+          <input id="user-password" type="password" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" placeholder="Optional">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Company ID (for recruiters)</span>
+          <input id="user-company-id" type="number" min="1" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" placeholder="Optional">
+        </label>
+        <div class="md:col-span-3 flex justify-end">
+          <button type="submit" class="rounded-md bg-orange-500 px-6 py-2 font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Add user</button>
+        </div>
+      </form>
+      <div id="admin-users-wrapper" class="overflow-x-auto hidden">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="text-left text-[#0b1e35]/70 uppercase border-b">
+              <th class="py-2 pr-4">Name</th>
+              <th class="py-2 pr-4">Email</th>
+              <th class="py-2 pr-4">Role</th>
+              <th class="py-2 pr-4">Phone</th>
+              <th class="py-2 pr-4">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-users-table" class="divide-y"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bg-white rounded-lg shadow p-6 space-y-4">
+      <div class="flex items-center justify-between gap-2 flex-wrap">
+        <h2 class="text-2xl font-semibold text-[#0b1e35]">Companies</h2>
+        <div class="flex items-center gap-2">
+          <button id="show-companies" type="button" class="text-sm text-blue-600 hover:text-blue-700">Show list</button>
+          <button id="refresh-companies" class="text-sm text-orange-600 hover:text-orange-700">Refresh</button>
+        </div>
+      </div>
+      <form id="admin-company-create-form" class="grid gap-4 md:grid-cols-3">
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Name</span>
+          <input id="company-name" type="text" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Industry</span>
+          <input id="company-industry" type="text" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Size</span>
+          <select id="company-size" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+            <option value="">Select...</option>
+            <option value="Startup">Startup</option>
+            <option value="PME">PME</option>
+            <option value="Grande entreprise">Grande entreprise</option>
+          </select>
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Website</span>
+          <input id="company-website" type="url" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Email</span>
+          <input id="company-email" type="email" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Phone</span>
+          <input id="company-phone" type="tel" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col md:col-span-3">
+          <span class="text-sm font-medium text-[#0b1e35]">Address</span>
+          <input id="company-address" type="text" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <div class="md:col-span-3 flex justify-end">
+          <button type="submit" class="rounded-md bg-orange-500 px-6 py-2 font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Add company</button>
+        </div>
+      </form>
+      <div id="admin-companies" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 hidden"></div>
+    </section>
+
+    <section class="bg-white rounded-lg shadow p-6 space-y-4">
+      <div class="flex items-center justify-between gap-2 flex-wrap">
+        <h2 class="text-2xl font-semibold text-[#0b1e35]">Advertisements</h2>
+        <div class="flex items-center gap-2">
+          <button id="show-ads" type="button" class="text-sm text-blue-600 hover:text-blue-700">Show list</button>
+          <button id="refresh-ads" class="text-sm text-orange-600 hover:text-orange-700">Refresh</button>
+        </div>
+      </div>
+      <form id="admin-ad-create-form" class="grid gap-4 md:grid-cols-2">
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Company ID</span>
+          <input id="ad-company-id" type="number" min="1" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Title</span>
+          <input id="ad-title-input" type="text" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col md:col-span-2">
+          <span class="text-sm font-medium text-[#0b1e35]">Description</span>
+          <textarea id="ad-description-input" rows="3" required class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"></textarea>
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Location</span>
+          <input id="ad-location-input" type="text" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Contract type</span>
+          <select id="ad-contract-input" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+            <option value="">Select...</option>
+            <option value="CDI">CDI</option>
+            <option value="CDD">CDD</option>
+            <option value="Stage">Stage</option>
+            <option value="Freelance">Freelance</option>
+            <option value="Alternance">Alternance</option>
+          </select>
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Salary min (€)</span>
+          <input id="ad-salary-min-input" type="number" min="0" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Salary max (€)</span>
+          <input id="ad-salary-max-input" type="number" min="0" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <label class="flex flex-col">
+          <span class="text-sm font-medium text-[#0b1e35]">Expiry date</span>
+          <input id="ad-expiry-input" type="date" class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500">
+        </label>
+        <div class="md:col-span-2 flex justify-end">
+          <button type="submit" class="rounded-md bg-orange-500 px-6 py-2 font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Add advertisement</button>
+        </div>
+      </form>
+      <div id="admin-ads" class="grid gap-4 md:grid-cols-2 hidden"></div>
+    </section>
+
+    <section class="bg-white rounded-lg shadow p-6 space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-semibold text-[#0b1e35]">Applications</h2>
+        <button id="refresh-applications-admin" class="text-sm text-orange-600 hover:text-orange-700">Refresh</button>
+      </div>
+      <p class="text-sm text-[#0b1e35]/70">Update application status or remove entries.</p>
+      <div id="admin-applications" class="space-y-4"></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,58 @@
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2f7 0%, #dbe0d7 35%, #f8f9fb 100%);
+  font-family: 'Roboto', sans-serif;
+}
+
+.account-intro {
+  background: radial-gradient(circle at top right, rgba(255, 191, 120, 0.25), transparent 55%), #0b1e35;
+}
+
+.account-bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-weight: 600;
+}
+
+.account-form {
+  font-family: 'Roboto', sans-serif;
+}
+
+.account-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.account-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0b1e35;
+}
+
+.account-input {
+  width: 100%;
+  border-radius: 0.85rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(11, 30, 53, 0.12);
+  background: rgba(11, 30, 53, 0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-size: 0.95rem;
+  color: #0b1e35;
+}
+
+.account-input:focus {
+  outline: none;
+  border-color: rgba(255, 111, 0, 0.6);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 111, 0, 0.15);
+}
+
+.account-input::placeholder {
+  color: rgba(11, 30, 53, 0.45);
+}

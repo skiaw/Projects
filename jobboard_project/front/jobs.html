@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Launch - Job Offers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reset.css">
+  <script defer src="js/session.js"></script>
+  <script defer src="js/spa.js"></script>
+</head>
+<body class="bg-gray-100 font-['Roboto']">
+
+  <nav class="bg-[#dbe0d7] flex items-center justify-between px-6 py-3 shadow-md">
+    <div class="flex items-center space-x-3">
+      <a href="index.html" class="logo-link">
+        <img src="assets/erasebg-transformed.png" alt="Career Launch logo" class="logo-image">
+      </a>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-6 text-[#0b1e35] nav-links" data-nav-auth>
+      <a href="login.html" class="hover:text-orange-600">Log in</a>
+      <a href="jobs.html" class="hover:text-orange-600">Find a job</a>
+      <button data-action="logout" class="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 hidden">Disconnect</button>
+    </div>
+  </nav>
+
+  <div id="page-content">
+    <section class="bg-white py-6 shadow">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
+        <h1 class="text-3xl font-bold text-[#0b1e35]" style="font-family: 'Playfair Display', serif;">Job Offers</h1>
+        <input
+          type="text"
+          placeholder="Search for a position..."
+          class="w-full md:w-1/2 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+      </div>
+    </section>
+
+    <main
+      id="job-list"
+      class="container mx-auto px-6 py-10 grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+    ></main>
+  </div>
+
+</body>
+</html>

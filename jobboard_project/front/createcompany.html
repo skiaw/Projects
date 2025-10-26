@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Company Account</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="stylecreateaccount.css">
+  <script defer src="js/session.js"></script>
+  <script defer src="js/createcompany.js"></script>
+</head>
+
+<body class="bg-gray-100 font-['Roboto']">
+
+  <nav class="bg-[#dbe0d7] flex items-center justify-between px-6 py-3 shadow-md">
+    <div class="flex items-center space-x-3">
+      <a href="index.html" class="logo-link">
+        <img src="assets/erasebg-transformed.png" alt="Career Launch logo" class="logo-image">
+      </a>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-6 text-[#0b1e35] nav-links" data-nav-auth>
+        <a href="login.html" class="hover:text-orange-600">Log in</a>
+      <a href="jobs.html" class="hover:text-orange-600">Find a job</a>
+      <a href="company.html" class="hover:text-orange-600">Company</a>
+      <button data-action="logout" class="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 hidden">Disconnect</button>
+    </div>
+  </nav>
+
+  <section class="px-6 py-16">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid gap-8 lg:grid-cols-[1.1fr_1fr] bg-white/85 backdrop-blur border border-gray-200 shadow-2xl rounded-3xl overflow-hidden">
+        <div class="account-intro p-8 md:p-12 text-white bg-[#0b1e35]">
+          <h1 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Create your Company Profile</h1>
+          <p class="text-base md:text-lg mb-8 text-white/90">
+            Join our network of recruiters and post your job offers easily. Manage applications, schedule interviews, and find the right talent faster.
+          </p>
+          <ul class="space-y-3 text-white/85 text-sm md:text-base">
+            <li>✓ Showcase your company to thousands of candidates.</li>
+            <li>✓ Manage job postings in one dashboard.</li>
+            <li>✓ Receive smart matches and automatic alerts.</li>
+          </ul>
+        </div>
+
+        <div class="p-8 md:p-12 bg-white">
+          <form class="space-y-6" id="company-form">
+            <div class="grid gap-6 md:grid-cols-2">
+              <label class="account-field">
+                <span class="account-label">Company Name</span>
+                <input id="name" type="text" name="name" required class="account-input" placeholder="TechNova">
+              </label>
+
+              <label class="account-field">
+                <span class="account-label">Industry</span>
+                <input id="industry" type="text" name="industry" required class="account-input" placeholder="Technology, Marketing...">
+              </label>
+            </div>
+
+            <label class="account-field">
+              <span class="account-label">Company Size</span>
+              <select id="size" name="size" required class="account-input">
+                <option value="">Select size</option>
+                <option value="Startup">Startup (1–10 employees)</option>
+                <option value="PME">PME (11–250 employees)</option>
+                <option value="Grande entreprise">Grande entreprise (250+ employees)</option>
+              </select>
+            </label>
+
+            <div class="grid gap-6 md:grid-cols-2">
+              <label class="account-field">
+                <span class="account-label">Website</span>
+                <input id="website" type="url" name="website" class="account-input" placeholder="https://www.company.com">
+              </label>
+
+              <label class="account-field">
+                <span class="account-label">Email</span>
+                <input id="email" type="email" name="email" required class="account-input" placeholder="contact@company.com">
+              </label>
+            </div>
+
+            <label class="account-field">
+              <span class="account-label">Company phone number</span>
+              <input id="phone" type="tel" name="phone" required class="account-input" placeholder="+33 1 23 45 67 89">
+            </label>
+
+            <label class="account-field">
+              <span class="account-label">Address of your company</span>
+              <input id="address" type="text" name="address" class="account-input" placeholder="123 rue du Faubourg Saint-Honoré, Paris">
+            </label>
+
+            <label class="account-field">
+              <span class="account-label">About your company</span>
+              <textarea id="description" name="description" rows="4" class="account-input" placeholder="Describe your company and what makes it great to work for..."></textarea>
+            </label>
+
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <button id="next-step-company" type="button" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
+                Create your account
+              </button>
+              <a href="login.html" class="text-[#0b1e35] font-medium hover:text-orange-500 transition">
+                Already registered? Sign in
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
