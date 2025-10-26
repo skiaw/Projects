@@ -134,7 +134,6 @@ Tyliann Cellier-Fuma - Tyliann.cellier-fuma@epitech.eu
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: /contributors.png
 [contributors-url]: https://github.com/EpitechMscProPromo2028/T-WEB-501-PAR_14/graphs/contributors
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
